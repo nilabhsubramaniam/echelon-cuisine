@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+@import 'swiper/css';
+@import 'swiper/css/pagination';
+@import 'swiper/css/autoplay';
+
 :root {
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
@@ -16,6 +20,7 @@
   }
 }
 
+/* Ensure the body background gradient does not affect the Swiper component */
 body {
   color: rgb(var(--foreground-rgb));
   background: linear-gradient(
@@ -24,6 +29,15 @@ body {
       rgb(var(--background-end-rgb))
     )
     rgb(var(--background-start-rgb));
+}
+
+/* Swiper container and slide styles */
+.mySwiper {
+  @apply bg-white; /* Apply white background to the Swiper container */
+}
+
+.mySwiper .swiper-slide {
+  @apply bg-white; /* Apply white background to each Swiper slide */
 }
 
 @layer utilities {
