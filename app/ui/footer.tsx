@@ -133,8 +133,7 @@ import {
             </div>
           </div>
           <div className="border-t border-white border-opacity-20 py-4 text-center text-sm">
-            © {currentYear} Charminar Indian Restaurant & Catering. All rights
-            reserved.
+            © {currentYear} Charminar Indian Restaurant & Catering. All rights reserved.
           </div>
         </footer>
       </>

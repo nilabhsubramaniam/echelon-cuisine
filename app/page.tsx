@@ -1,76 +1,80 @@
 "use client";
 
-import { useState } from "react";
 import Navbar from "@/app/ui/navbar";
 import Footer from "@/app/ui/footer";
-import About from "@/app/ui/about_us";
 import TestimonialSlider from "@/app/ui/testimonial";
 import Link from "next/link";
+import { FaShoppingCart, FaCreditCard, FaSmile } from "react-icons/fa"; // Importing icons from React Icons
 
 export default function Home() {
-  const [showAbout, setShowAbout] = useState(false);
-
   return (
     <div className="min-h-screen flex flex-col">
-      <Navbar setShowAbout={setShowAbout} />
-      <main className="flex flex-1 flex-col items-center justify-center p-8">
-        {showAbout ? (
-          <About />
-        ) : (
-          <div className="flex flex-col md:flex-row md:space-x-8 p-8">
-            {/* Left Side: Image */}
-            <div className="flex-1">
-              <img
-                src="/about_us.jpeg" // Use the correct path to your main image
-                alt="Main Visual"
-                className="w-full h-auto object-cover rounded-lg shadow-lg"
-                width={500}
-                height={500}
-              />
-            </div>
-
-            {/* Right Side: Content */}
-            <div className="flex-1 mt-8 md:mt-0">
-              <h1 className="text-4xl font-bold mb-4">
-                Welcome to CHARMINAR Indian Restaurant & Catering!
-              </h1>
-              <p className="mb-4">
-                A Restaurant serving authentic Indian cuisine, has been an
-                identity for hospitality and a symbol of awesome food served in
-                a spacious environment. Known for serving the best Indian food
-                made with authentic, fresh ingredients and spices to serve the
-                richest of the taste. Whether you’re interested in joining us
-                for lunch or dinner, you’re sure to experience a meal you’ll
-                remember.
-              </p>
-              <p className="mb-4">
-                The delight for our Customers has been further extended to
-                catering at Birthday Parties, Weddings, Private Events & Local
-                Barbecues, making us the most preferred Indian Restaurant &
-                Catering in San Diego!
-              </p>
-              <div className="mt-8">
-                <h2 className="text-2xl font-semibold mb-2">Our Specialties</h2>
-                <p className="mb-4">
-                  We take pride in our unique blend of spices and traditional
-                  recipes. Our menu offers a variety of mouth-watering dishes,
-                  from aromatic biryanis to flavorful curries, all crafted with
-                  care and passion.
-                </p>
-                <p className="mt-4">
-                  <Link href="/about" className="text-blue-600 hover:underline">
-                    Read More about our special events and offers.
-                  </Link>
-                </p>
-              </div>
+      <Navbar />
+      <main className="flex flex-1 flex-col items-center justify-center pt-[4rem] pb-8">
+        {/* Background Section */}
+        <div className="relative w-full h-[500px]">
+          <img
+            src="/restaurant.jpg"
+            alt="Restaurant"
+            className="absolute inset-0 w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 flex flex-col items-center justify-center p-4 text-center text-white bg-black bg-opacity-50">
+            <h1 className="text-3xl md:text-4xl font-bold mb-4">
+              It's Not Just Food, It's an Experience
+            </h1>
+            <p className="mb-4">
+              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ipsa,
+              provident dolorum. Voluptatum ducimus minima quasi unde,
+              voluptatibus soluta eligendi. Enim, architecto autem.
+            </p>
+            <div className="mt-4">
+              <Link
+                href="/menu"
+                className="bg-blue-600 text-white px-6 py-2 rounded-lg shadow-md hover:bg-blue-700"
+              >
+                Explore Menu
+              </Link>
             </div>
           </div>
-        )}
+        </div>
+
+        {/* How It Works Section */}
+        <section className="w-full px-8 py-16 bg-gray-100">
+          <h2 className="text-3xl font-bold text-center mb-12">How It Works</h2>
+          {/* Separation Line */}
+          <div className="border-t border-gray-300 mb-12"></div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {/* First Box */}
+            <div className="flex flex-col items-center p-6 bg-white rounded-lg shadow-lg transition-transform transform hover:scale-105 hover:bg-[rgba(14,17,24,255)] hover:text-[rgba(255,245,148,255)] cursor-pointer">
+              <FaShoppingCart className="text-4xl mb-4" />
+              <h3 className="text-xl font-semibold mb-2">Easy Order</h3>
+              <p className="text-center">
+                Place your order effortlessly with our user-friendly interface.
+              </p>
+            </div>
+
+            {/* Second Box */}
+            <div className="flex flex-col items-center p-6 bg-white rounded-lg shadow-lg transition-transform transform hover:scale-105 hover:bg-[rgba(14,17,24,255)] hover:text-[rgba(255,245,148,255)] cursor-pointer">
+              <FaCreditCard className="text-4xl mb-4" />
+              <h3 className="text-xl font-semibold mb-2">Secure Payment</h3>
+              <p className="text-center">
+                Pay securely through our trusted payment gateways.
+              </p>
+            </div>
+
+            {/* Third Box */}
+            <div className="flex flex-col items-center p-6 bg-white rounded-lg shadow-lg transition-transform transform hover:scale-105 hover:bg-[rgba(14,17,24,255)] hover:text-[rgba(255,245,148,255)] cursor-pointer">
+              <FaSmile className="text-4xl mb-4" />
+              <h3 className="text-xl font-semibold mb-2">Enjoy Your Meal</h3>
+              <p className="text-center">
+                Sit back, relax, and enjoy your delicious meal.
+              </p>
+            </div>
+          </div>
+        </section>
 
         {/* Testimonial Slider */}
-       
-          {/* <TestimonialSlider /> */}
-      
+        <TestimonialSlider />
       </main>
       <Footer />
     </div>
