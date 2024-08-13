@@ -1,158 +1,120 @@
 "use client"; // Ensure this is a Client Component
 
-import { useState } from 'react';
-import { PhoneIcon, ShoppingCartIcon } from '@heroicons/react/24/solid';
-import { FaBars, FaHome, FaInfoCircle, FaChevronDown, FaCaretDown } from 'react-icons/fa';
-import Image from 'next/image';
-import Link from 'next/link';
+import { useState } from "react";
+import Image from "next/image";
+import Link from "next/link";
 
-interface NavbarProps {
-  setShowAbout: (show: boolean) => void;
-}
-
-export default function Navbar({ setShowAbout }: NavbarProps) {
-  const [isAboutDropdownOpen, setIsAboutDropdownOpen] = useState(false);
-  const [isMenuDropdownOpen, setIsMenuDropdownOpen] = useState(false);
+export default function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-
-  const toggleAboutDropdown = () => {
-    setIsAboutDropdownOpen(!isAboutDropdownOpen);
-    setIsMenuDropdownOpen(false); // Close other dropdowns
-  };
-
-  const toggleMenuDropdown = () => {
-    setIsMenuDropdownOpen(!isMenuDropdownOpen);
-    setIsAboutDropdownOpen(false); // Close other dropdowns
-  };
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
   };
 
   return (
-    <nav className="bg-transparent shadow-md">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16">
-          {/* Logo */}
-          <div className="flex items-center">
-            <Link href="/">
-              <Image
-                src="/logo.jpg"
-                alt="YourBrand Logo"
-                width={70}  // Adjust width as necessary
-                height={70} // Adjust height as necessary
-                className="h-10 w-auto"
-              />
-            </Link>
-          </div>
-
-          {/* Desktop Navigation Links */}
-          <div className="hidden md:flex items-center space-x-6">
-            <Link href="/" className="text-black hover:text-orange-500 hover:underline underline-offset-4 flex items-center">
-              <FaHome className="h-5 w-5 mr-2" />
-              Home
-            </Link>
-            <div className="relative">
-              <button 
-                className="text-black hover:text-orange-500 hover:underline underline-offset-4 flex items-center"
-                onClick={() => setShowAbout(true)}
-              >
-                About Us <FaChevronDown className="ml-2 h-5 w-5" />
-              </button>
-              {isAboutDropdownOpen && (
-                <div className="absolute left-0 mt-2 w-48 bg-transparent border border-gray-200 shadow-lg rounded-md">
-                  <Link href="#" className="block px-4 py-2 text-black hover:bg-orange-100 hover:text-orange-500">Our Story</Link>
-                  <Link href="#" className="block px-4 py-2 text-black hover:bg-orange-100 hover:text-orange-500">Team</Link>
-                  <Link href="#" className="block px-4 py-2 text-black hover:bg-orange-100 hover:text-orange-500">Careers</Link>
-                </div>
-              )}
-            </div>
-            <Link href="#" className="text-black hover:text-orange-500 hover:underline underline-offset-4 flex items-center">
-              <PhoneIcon className="h-5 w-5 mr-2" />
-              Call Us
-            </Link>
-            <Link href="#" className="text-black hover:text-orange-500 hover:underline underline-offset-4 flex items-center">
-              <ShoppingCartIcon className="h-5 w-5 mr-2" />
-              Order Online
-            </Link>
-            <div className="relative">
-              <button 
-                className="text-black hover:text-orange-500 hover:underline underline-offset-4 flex items-center"
-                onClick={toggleMenuDropdown}
-              >
-                Menu <FaCaretDown className="ml-2 h-5 w-5" />
-              </button>
-              {isMenuDropdownOpen && (
-                <div className="absolute left-0 mt-2 w-48 bg-transparent border border-gray-200 shadow-lg rounded-md">
-                  <Link href="#" className="block px-4 py-2 text-black hover:bg-orange-100 hover:text-orange-500">Item 1</Link>
-                  <Link href="#" className="block px-4 py-2 text-black hover:bg-orange-100 hover:text-orange-500">Item 2</Link>
-                  <Link href="#" className="block px-4 py-2 text-black hover:bg-orange-100 hover:text-orange-500">Item 3</Link>
-                </div>
-              )}
-            </div>
-          </div>
-
-          {/* Mobile Menu Button with Icons */}
-          <div className="md:hidden flex items-center">
-            <button 
-              className="text-black hover:text-orange-500 focus:outline-none"
-              onClick={toggleMobileMenu}
-            >
-              <FaBars className="h-6 w-6" />
-            </button>
-          </div>
+    <nav className="bg-white bg-opacity-80 shadow-md fixed top-0 left-0 right-0 z-50">
+  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="flex justify-between items-center h-16">
+      {/* Logo and Text */}
+      <div className="flex items-center space-x-2">
+        <Link href="/">
+          <Image
+            src="/logo.jpg"
+            alt="YourBrand Logo"
+            width={70} // Adjust width as necessary
+            height={70} // Adjust height as necessary
+            className="h-10 w-auto"
+          />
+        </Link>
+        <div className="flex flex-col">
+          <div className="text-xs font-bold">Charminar</div>
+          <div className="text-xs font-medium">Indian Restaurant & Catering</div>
+          <div className="text-xs font-light">San Diego, CA.</div>
         </div>
-
-        {/* Mobile Menu Links */}
-        {isMobileMenuOpen && (
-          <div className="md:hidden">
-            <div className="flex flex-col space-y-4 py-4">
-              <Link href="/" className="flex items-center text-black hover:text-orange-500">
-                <FaHome className="h-5 w-5 mr-2" />
-                Home
-              </Link>
-              <div className="relative">
-                <button 
-                  className="flex items-center text-black hover:text-orange-500"
-                  onClick={() => setShowAbout(true)}
-                >
-                  About Us <FaCaretDown className="ml-2 h-5 w-5" />
-                </button>
-                {isAboutDropdownOpen && (
-                  <div className="absolute left-0 mt-2 w-48 bg-transparent border border-gray-200 shadow-lg rounded-md">
-                    <Link href="#" className="block px-4 py-2 text-black hover:bg-orange-100 hover:text-orange-500">Our Story</Link>
-                    <Link href="#" className="block px-4 py-2 text-black hover:bg-orange-100 hover:text-orange-500">Team</Link>
-                    <Link href="#" className="block px-4 py-2 text-black hover:bg-orange-100 hover:text-orange-500">Careers</Link>
-                  </div>
-                )}
-              </div>
-              <Link href="#" className="flex items-center text-black hover:text-orange-500">
-                <PhoneIcon className="h-5 w-5 mr-2" />
-                Call Us
-              </Link>
-              <Link href="#" className="flex items-center text-black hover:text-orange-500">
-                <ShoppingCartIcon className="h-5 w-5 mr-2" />
-                Order Online
-              </Link>
-              <div className="relative">
-                <button 
-                  className="flex items-center text-black hover:text-orange-500"
-                  onClick={toggleMenuDropdown}
-                >
-                  Menu <FaCaretDown className="ml-2 h-5 w-5" />
-                </button>
-                {isMenuDropdownOpen && (
-                  <div className="absolute left-0 mt-2 w-48 bg-transparent border border-gray-200 shadow-lg rounded-md">
-                    <Link href="#" className="block px-4 py-2 text-black hover:bg-orange-100 hover:text-orange-500">Item 1</Link>
-                    <Link href="#" className="block px-4 py-2 text-black hover:bg-orange-100 hover:text-orange-500">Item 2</Link>
-                    <Link href="#" className="block px-4 py-2 text-black hover:bg-orange-100 hover:text-orange-500">Item 3</Link>
-                  </div>
-                )}
-              </div>
-            </div>
-          </div>
-        )}
       </div>
-    </nav>
+
+      {/* Desktop Navigation Links */}
+      <div className="hidden md:flex items-center space-x-6">
+        <Link
+          href="/"
+          className="text-blue-700 hover:text-orange-500 hover:underline underline-offset-4"
+        >
+          Home
+        </Link>
+        <Link
+          href="#"
+          className="text-blue-700 hover:text-orange-500 hover:underline underline-offset-4"
+        >
+          About Us
+        </Link>
+        <Link
+          href="#"
+          className="text-blue-700 hover:text-orange-500 hover:underline underline-offset-4"
+        >
+          Menu
+        </Link>
+        <Link
+          href="#"
+          className="text-blue-700 hover:text-orange-500 hover:underline underline-offset-4"
+        >
+          Call Us
+        </Link>
+        <Link
+          href="#"
+          className="text-blue-700 hover:text-orange-500 hover:underline underline-offset-4"
+        >
+          Order Online
+        </Link>
+      </div>
+
+      {/* Mobile Menu Button */}
+      <div className="md:hidden flex items-center">
+        <button
+          className="text-blue-700 hover:text-orange-500 focus:outline-none"
+          onClick={toggleMobileMenu}
+        >
+          <svg
+            className="h-6 w-6"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2"
+              d="M4 6h16M4 12h16m-7 6h7"
+            ></path>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    {/* Mobile Menu Links */}
+    {isMobileMenuOpen && (
+      <div className="md:hidden">
+        <div className="flex flex-col space-y-4 py-4">
+          <Link href="/" className="text-blue-700 hover:text-orange-500">
+            Home
+          </Link>
+          <Link href="#" className="text-blue-700 hover:text-orange-500">
+            About Us
+          </Link>
+          <Link href="#" className="text-blue-700 hover:text-orange-500">
+            Menu
+          </Link>
+          <Link href="#" className="text-blue-700 hover:text-orange-500">
+            Call Us
+          </Link>
+          <Link href="#" className="text-blue-700 hover:text-orange-500">
+            Order Online
+          </Link>
+        </div>
+      </div>
+    )}
+  </div>
+</nav>
+
   );
 }
