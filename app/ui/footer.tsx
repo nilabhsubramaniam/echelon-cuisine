@@ -1,3 +1,5 @@
+// components/Footer.tsx
+
 import {
     FaFacebookF,
     FaInstagram,
@@ -6,6 +8,7 @@ import {
     FaTwitter,
     FaYoutube,
     FaClock,
+    FaYelp,
   } from "react-icons/fa";
   import Image from "next/image";
   import Link from "next/link";
@@ -13,10 +16,26 @@ import {
   
   export default function Footer() {
     const socialIcons = [
-      <FaFacebookF key="facebook" className="h-6 w-6 hover:text-gray-300" />,
-      <FaInstagram key="instagram" className="h-6 w-6 hover:text-gray-300" />,
-      <FaTwitter key="twitter" className="h-6 w-6 hover:text-gray-300" />,
-      <FaYoutube key="youtube" className="h-6 w-6 hover:text-gray-300" />,
+      {
+        icon: <FaFacebookF className="h-6 w-6 hover:text-gray-300" />,
+        link: "https://www.facebook.com/charminarsandiego",
+      },
+      {
+        icon: <FaInstagram className="h-6 w-6 hover:text-gray-300" />,
+        link: "https://www.instagram.com/charminarsd/",
+      },
+      {
+        icon: <FaTwitter className="h-6 w-6 hover:text-gray-300" />,
+        link: "#", // Add Twitter link here
+      },
+      {
+        icon: <FaYoutube className="h-6 w-6 hover:text-gray-300" />,
+        link: "#", // Add YouTube link here
+      },
+      {
+        icon: <FaYelp className="h-6 w-6 hover:text-gray-300" />,
+        link: "https://www.yelp.com/biz/charminar-indian-restaurant-and-catering-san-diego-2",
+      },
     ];
   
     const contactInfo = [
@@ -57,86 +76,96 @@ import {
     const currentYear = new Date().getFullYear();
   
     return (
-      <>
-        <footer className="bg-gradient-to-r from-orange-500 via-orange-600 to-orange-700 text-white">
-          <div className="mx-auto flex max-w-7xl flex-col items-start justify-between px-4 py-12 sm:flex-row sm:px-6 lg:px-8 lg:py-16">
-            {/* Logo and Restaurant Info */}
-            <div className="mb-8 flex flex-col space-y-8 sm:mb-0 w-1/4">
-              <h2 className="text-3xl font-bold">
-                <Link href="/">
-                  <Image
-                    src="/logo.jpg"
-                    alt="YourBrand Logo"
-                    width={70}
-                    height={70}
-                    className="h-10 w-auto"
-                  />
-                </Link>
-              </h2>
-              <div>
-                <h3 className="mb-4 text-lg font-semibold">
-                  Charminar Indian Restaurant & Catering
-                </h3>
-                <p className="text-base">6755 Mira Mesa Blvd 113</p>
-                <p className="text-base">San Diego, CA 92121</p>
-              </div>
-            </div>
-  
-            {/* Vertical Line */}
-            <div className="w-px bg-white mx-4" />
-  
-            {/* Business Hours */}
-            <div className="mb-8 flex flex-col space-y-4 sm:mb-0 w-1/4">
-              <h3 className="mb-4 text-lg font-semibold text-white flex items-center">
-                <FaClock className="mr-2" />
-                Business Hours
+      <footer className="bg-gradient-to-r from-orange-500 via-orange-600 to-orange-700 text-white">
+        <div className="mx-auto flex max-w-7xl flex-col items-start justify-between px-4 py-12 sm:flex-row sm:px-6 lg:px-8 lg:py-16">
+          {/* Logo and Restaurant Info */}
+          <div className="mb-8 flex flex-col space-y-8 sm:mb-0 w-1/4">
+            <h2 className="text-3xl font-bold">
+              <Link href="/">
+                <Image
+                  src="/logo.jpg"
+                  alt="YourBrand Logo"
+                  width={70}
+                  height={70}
+                  className="h-10 w-auto"
+                />
+              </Link>
+            </h2>
+            <div>
+              <h3 className="mb-4 text-lg font-semibold">
+                Charminar Indian Restaurant & Catering
               </h3>
-              <ul className="text-white">
-                {businessHours.map((hour, index) => (
-                  <li key={index} className="py-1">
-                    <strong>{hour.day}:</strong> {hour.hours}
-                  </li>
-                ))}
-              </ul>
+              <p className="text-base">6755 Mira Mesa Blvd 113</p>
+              <p className="text-base">San Diego, CA 92121</p>
             </div>
+          </div>
   
-            {/* Vertical Line */}
-            <div className="w-px bg-white mx-4" />
+          {/* Vertical Line */}
+          <div className="w-px bg-white mx-4" />
   
-            {/* Get Direction */}
-            <div className="mb-8 flex flex-col space-y-4 sm:mb-0 w-1/4">
-              <h3 className="mb-4 text-lg font-semibold">Get Direction</h3>
+          {/* Business Hours */}
+          <div className="mb-8 flex flex-col space-y-4 sm:mb-0 w-1/4">
+            <h3 className="mb-4 text-lg font-semibold text-white flex items-center">
+              <FaClock className="mr-2" />
+              Business Hours
+            </h3>
+            <ul className="text-white">
+              {businessHours.map((hour, index) => (
+                <li key={index} className="py-1">
+                  <strong>{hour.day}:</strong> {hour.hours}
+                </li>
+              ))}
+            </ul>
+          </div>
+  
+          {/* Vertical Line */}
+          <div className="w-px bg-white mx-4" />
+  
+          {/* Get Direction */}
+          <div className="mb-8 flex flex-col space-y-4 sm:mb-0 w-1/4">
+            <h3 className="mb-4 text-lg font-semibold">Get Direction</h3>
+            <ul className="space-y-4">
+              {contactInfo.map((item, index) => (
+                <li key={index}>
+                  {item.icon}
+                  {item.text}
+                </li>
+              ))}
+            </ul>
+          </div>
+  
+          {/* Vertical Line */}
+          <div className="w-px bg-white mx-4" />
+  
+          {/* Social Icons and Quick Links */}
+          <div className="mb-8 flex flex-col space-y-4 sm:mb-0 w-1/4">
+            <div className="flex space-x-4">
+              {socialIcons.map((social, index) => (
+                <a
+                  key={index}
+                  href={social.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-gray-300"
+                >
+                  {social.icon}
+                </a>
+              ))}
+            </div>
+            <div>
+              <h3 className="mb-4 text-lg font-semibold">Quick Links</h3>
               <ul className="space-y-4">
-                {contactInfo.map((item, index) => (
-                  <li key={index}>
-                    {item.icon}
-                    {item.text}
-                  </li>
+                {quickLinks.map((link, index) => (
+                  <li key={index}>{link}</li>
                 ))}
               </ul>
             </div>
-  
-            {/* Vertical Line */}
-            <div className="w-px bg-white mx-4" />
-  
-            {/* Social Icons and Quick Links */}
-            <div className="mb-8 flex flex-col space-y-4 sm:mb-0 w-1/4">
-              <div className="flex space-x-4">{socialIcons}</div>
-              <div>
-                <h3 className="mb-4 text-lg font-semibold">Quick Links</h3>
-                <ul className="space-y-4">
-                  {quickLinks.map((link, index) => (
-                    <li key={index}>{link}</li>
-                  ))}
-                </ul>
-              </div>
-            </div>
           </div>
-          <div className="border-t border-white border-opacity-20 py-4 text-center text-sm">
-            © {currentYear} Charminar Indian Restaurant & Catering. All rights reserved.
-          </div>
-        </footer>
-      </>
+        </div>
+        <div className="border-t border-white border-opacity-20 py-4 text-center text-sm">
+          © {currentYear} Charminar Indian Restaurant & Catering. All rights reserved.
+        </div>
+      </footer>
     );
   }
   

@@ -6,11 +6,9 @@ import React from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/pagination';
-import 'swiper/css/autoplay';
 import { Pagination, Autoplay } from 'swiper/modules';
-import { FaStar } from 'react-icons/fa';
+import { FaQuoteLeft, FaStar, FaUser } from 'react-icons/fa';
 
-// Sample testimonials
 const testimonials = [
   {
     username: "Rohan",
@@ -49,38 +47,39 @@ const testimonials = [
   },
 ];
 
-const TestimonialsSlider: React.FC = () => {
+export default function TestimonialsSlider() {
   return (
     <Swiper
       spaceBetween={30}
       pagination={{ clickable: true }}
+      autoplay={{ delay: 3000, disableOnInteraction: false }}
       modules={[Pagination, Autoplay]}
       className="mySwiper"
     >
       {testimonials.map((testimonial, index) => (
-        <SwiperSlide key={index}>
-          <div className="p-6 bg-white shadow-lg rounded-lg">
-            <div className="flex flex-col items-center text-center">
-              <div className="flex items-center mb-4">
-                {[...Array(5)].map((_, i) => (
-                  <FaStar
-                    key={i}
-                    className={`h-5 w-5 ${
-                      i < testimonial.rating
-                        ? 'text-yellow-500'
-                        : 'text-gray-300'
-                    }`}
-                  />
-                ))}
-              </div>
-              <h3 className="text-lg font-semibold mb-2">{testimonial.username}</h3>
-              <p className="text-gray-600">{testimonial.comment}</p>
+        <SwiperSlide key={index} className="flex items-center justify-center">
+          <div className="relative bg-white p-6 rounded-lg shadow-lg flex flex-col items-center text-center border border-gray-200 h-80 overflow-hidden">
+            <div className="flex items-center justify-center mb-4">
+              <FaUser className="text-gray-500 text-4xl" />
             </div>
+            <div className="flex items-center mb-4">
+              {[...Array(5)].map((_, i) => (
+                <FaStar
+                  key={i}
+                  className={`h-5 w-5 ${
+                    i < testimonial.rating ? 'text-yellow-500' : 'text-gray-300'
+                  }`}
+                />
+              ))}
+            </div>
+            <p className="text-gray-600 mb-4">
+              <FaQuoteLeft className="inline-block text-gray-400 text-xl mr-2" />
+              {`"${testimonial.comment}"`}
+            </p>
+            <h3 className="text-lg font-semibold">{testimonial.username}</h3>
           </div>
         </SwiperSlide>
       ))}
     </Swiper>
   );
-};
-
-export default TestimonialsSlider;
+}
