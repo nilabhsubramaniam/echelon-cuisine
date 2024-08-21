@@ -48,7 +48,3 @@ To learn more about Next.js and its features, check out the following resources:
 
 - [Next.js Documentation](https://nextjs.org/docs)
 - [Next.js GitHub Repository](https://github.com/vercel/next.js)
-
-
-```
-
