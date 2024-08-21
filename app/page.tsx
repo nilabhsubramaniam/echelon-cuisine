@@ -76,13 +76,18 @@ export default function Home() {
         />
         <div className="absolute inset-0 flex flex-col items-center justify-center p-4 text-center text-white bg-black bg-opacity-50">
           <h1 className="text-3xl md:text-4xl font-bold mb-4">
-            It's Not Just Food, It's an Experience
+            It&apos;s Not Just Food, It&apos;s an Experience
           </h1>
+
           <p className="mb-4">
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ipsa,
-            provident dolorum. Voluptatum ducimus minima quasi unde,
-            voluptatibus soluta eligendi. Enim, architecto autem.
+            At Charminar, we believe every meal is a celebration.
+            From our carefully crafted dishes to our warm and inviting
+            atmosphere, we strive to create an unforgettable dining experience.
+            Whether you&apos;re here for a special occasion or just a casual
+            meal, our commitment to excellence and passion for food will make
+            your visit truly memorable.
           </p>
+
           <div className="mt-4">
             <Link
               href="/about"
