@@ -15,23 +15,23 @@ import {
   export default function Footer() {
     const socialIcons = [
       {
-        icon: <FaFacebookF className="h-6 w-6 hover:text-gray-300" />,
+        icon: <FaFacebookF className="h-6 w-6 hover:text-gray-700" />,
         link: "https://www.facebook.com/charminarsandiego",
       },
       {
-        icon: <FaInstagram className="h-6 w-6 hover:text-gray-300" />,
+        icon: <FaInstagram className="h-6 w-6 hover:text-gray-700" />,
         link: "https://www.instagram.com/charminarsd/",
       },
       {
-        icon: <FaTwitter className="h-6 w-6 hover:text-gray-300" />,
+        icon: <FaTwitter className="h-6 w-6 hover:text-gray-700" />,
         link: "#", // Add Twitter link here
       },
       {
-        icon: <FaYoutube className="h-6 w-6 hover:text-gray-300" />,
+        icon: <FaYoutube className="h-6 w-6 hover:text-gray-700" />,
         link: "#", // Add YouTube link here
       },
       {
-        icon: <FaYelp className="h-6 w-6 hover:text-gray-300" />,
+        icon: <FaYelp className="h-6 w-6 hover:text-gray-700" />,
         link: "https://www.yelp.com/biz/charminar-indian-restaurant-and-catering-san-diego-2",
       },
     ];
@@ -74,7 +74,7 @@ import {
     const currentYear = new Date().getFullYear();
   
     return (
-      <footer className="bg-gradient-to-r from-orange-500 via-orange-600 to-orange-700 text-white">
+      <footer className="bg-yellow-500 text-white">
         <div className="mx-auto max-w-7xl flex flex-col items-start justify-between px-4 py-12 sm:px-6 lg:px-8 lg:py-16 space-y-8 sm:space-y-0 sm:flex-row sm:flex-wrap">
           {/* Logo and Restaurant Info */}
           <div className="w-full sm:w-1/2 lg:w-1/4 mb-8 sm:mb-0">
@@ -100,11 +100,11 @@ import {
   
           {/* Business Hours */}
           <div className="w-full sm:w-1/2 lg:w-1/4 mb-8 sm:mb-0">
-            <h3 className="mb-4 text-lg font-semibold text-white flex items-center">
+            <h3 className="mb-4 text-lg font-semibold flex items-center">
               <FaClock className="mr-2" />
               Business Hours
             </h3>
-            <ul className="text-white">
+            <ul>
               {businessHours.map((hour, index) => (
                 <li key={index} className="py-1">
                   <strong>{hour.day}:</strong> {hour.hours}
@@ -135,7 +135,7 @@ import {
                   href={social.link}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="hover:text-gray-300"
+                  className="hover:text-gray-700"
                 >
                   {social.icon}
                 </a>
