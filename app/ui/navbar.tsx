@@ -4,7 +4,6 @@ import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 
-
 export default function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
@@ -13,7 +12,7 @@ export default function Navbar() {
   };
 
   return (
-    <nav className="bg-white bg-opacity-80 shadow-md fixed top-0 left-0 right-0 z-50">
+    <nav className="bg-gradient-lime-blue text-white fixed top-0 left-0 right-0 z-50 shadow-md">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo and Text */}
@@ -38,31 +37,31 @@ export default function Navbar() {
           <div className="hidden md:flex items-center space-x-6">
             <Link
               href="/"
-              className="text-blue-700 hover:text-orange-500 hover:underline underline-offset-4"
+              className="hover:text-orange-500 hover:underline underline-offset-4"
             >
               Home
             </Link>
             <Link
-              href="/about"
-              className="text-blue-700 hover:text-orange-500 hover:underline underline-offset-4"
+              href="/about-us"
+              className="hover:text-orange-500 hover:underline underline-offset-4"
             >
               About Us
             </Link>
             <Link
               href="/menu"
-              className="text-blue-700 hover:text-orange-500 hover:underline underline-offset-4"
+              className="hover:text-orange-500 hover:underline underline-offset-4"
             >
               Menu
             </Link>
             <Link
               href="/call-us"
-              className="text-blue-700 hover:text-orange-500 hover:underline underline-offset-4"
+              className="hover:text-orange-500 hover:underline underline-offset-4"
             >
               Call Us
             </Link>
             <Link
               href="/order-online"
-              className="text-blue-700 hover:text-orange-500 hover:underline underline-offset-4"
+              className="hover:text-orange-500 hover:underline underline-offset-4"
             >
               Order Online
             </Link>
@@ -71,7 +70,7 @@ export default function Navbar() {
           {/* Mobile Menu Button */}
           <div className="md:hidden flex items-center">
             <button
-              className="text-blue-700 hover:text-orange-500 focus:outline-none"
+              className="hover:text-orange-500 focus:outline-none"
               onClick={toggleMobileMenu}
             >
               <svg
@@ -96,19 +95,19 @@ export default function Navbar() {
         {isMobileMenuOpen && (
           <div className="md:hidden">
             <div className="flex flex-col space-y-4 py-4">
-              <Link href="/" className="text-blue-700 hover:text-orange-500">
+              <Link href="/" className="hover:text-orange-500">
                 Home
               </Link>
-              <Link href="/about_us" className="text-blue-700 hover:text-orange-500">
+              <Link href="/about-us" className="hover:text-orange-500">
                 About Us
               </Link>
-              <Link href="/menu" className="text-blue-700 hover:text-orange-500">
+              <Link href="/menu" className="hover:text-orange-500">
                 Menu
               </Link>
-              <Link href="/call-us" className="text-blue-700 hover:text-orange-500">
+              <Link href="/call-us" className="hover:text-orange-500">
                 Call Us
               </Link>
-              <Link href="/order-online" className="text-blue-700 hover:text-orange-500">
+              <Link href="/order-online" className="hover:text-orange-500">
                 Order Online
               </Link>
             </div>

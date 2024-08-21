@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { lusitana } from "@/app/ui/fonts";
+import { roboto } from "@/app/ui/fonts";
 import Navbar from "@/app/ui/navbar";
 import Footer from "@/app/ui/footer";
 import "./globals.css";
@@ -16,7 +16,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${lusitana.className} antialiased`}>
+      <body className={`${roboto.className} antialiased`}>
         <div className="min-h-screen flex flex-col">
           <Navbar />
           <main className="flex-1">{children}</main>

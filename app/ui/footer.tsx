@@ -15,37 +15,40 @@ import {
   export default function Footer() {
     const socialIcons = [
       {
-        icon: <FaFacebookF className="h-6 w-6 hover:text-gray-700" />,
+        icon: <FaFacebookF className="h-6 w-6 hover:text-blue-200" />,
         link: "https://www.facebook.com/charminarsandiego",
       },
       {
-        icon: <FaInstagram className="h-6 w-6 hover:text-gray-700" />,
+        icon: <FaInstagram className="h-6 w-6 hover:text-blue-200" />,
         link: "https://www.instagram.com/charminarsd/",
       },
       {
-        icon: <FaTwitter className="h-6 w-6 hover:text-gray-700" />,
+        icon: <FaTwitter className="h-6 w-6 hover:text-blue-200" />,
         link: "#", // Add Twitter link here
       },
       {
-        icon: <FaYoutube className="h-6 w-6 hover:text-gray-700" />,
+        icon: <FaYoutube className="h-6 w-6 hover:text-blue-200" />,
         link: "#", // Add YouTube link here
       },
       {
-        icon: <FaYelp className="h-6 w-6 hover:text-gray-700" />,
+        icon: <FaYelp className="h-6 w-6 hover:text-blue-200" />,
         link: "https://www.yelp.com/biz/charminar-indian-restaurant-and-catering-san-diego-2",
       },
     ];
   
     const contactInfo = [
       {
-        icon: <FaPhoneAlt className="mr-2 inline-block" />,
+        icon: <FaPhoneAlt className="mr-2 inline-block text-blue-100" />,
         text: "+628123111179",
       },
       {
-        icon: <HiOutlineMail className="mr-2 inline-block" />,
+        icon: <HiOutlineMail className="mr-2 inline-block text-blue-100" />,
         text: "demo@gmail.com",
       },
-      { icon: <FaMapMarkerAlt className="mr-2 inline-block" />, text: "6755 Mira Mesa Blvd 113, San Diego, CA 92121" },
+      {
+        icon: <FaMapMarkerAlt className="mr-2 inline-block text-blue-100" />,
+        text: "6755 Mira Mesa Blvd 113, San Diego, CA 92121",
+      },
     ];
   
     const quickLinks = [
@@ -74,7 +77,7 @@ import {
     const currentYear = new Date().getFullYear();
   
     return (
-      <footer className="bg-yellow-500 text-white">
+      <footer className="bg-gradient-lime-blue text-white">
         <div className="mx-auto max-w-7xl flex flex-col items-start justify-between px-4 py-12 sm:px-6 lg:px-8 lg:py-16 space-y-8 sm:space-y-0 sm:flex-row sm:flex-wrap">
           {/* Logo and Restaurant Info */}
           <div className="w-full sm:w-1/2 lg:w-1/4 mb-8 sm:mb-0">
@@ -101,7 +104,7 @@ import {
           {/* Business Hours */}
           <div className="w-full sm:w-1/2 lg:w-1/4 mb-8 sm:mb-0">
             <h3 className="mb-4 text-lg font-semibold flex items-center">
-              <FaClock className="mr-2" />
+              <FaClock className="mr-2 text-blue-100" />
               Business Hours
             </h3>
             <ul>
@@ -135,7 +138,7 @@ import {
                   href={social.link}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="hover:text-gray-700"
+                  className="hover:text-blue-200"
                 >
                   {social.icon}
                 </a>

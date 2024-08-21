@@ -3,6 +3,8 @@ import { useState } from "react";
 import TestimonialSlider from "@/app/ui/testimonial";
 import Link from "next/link";
 import { FaShoppingCart, FaCreditCard, FaSmile } from "react-icons/fa";
+import Image from "next/image";
+import resturantPic from "../public/restaurant.jpg";
 
 type MenuType = "Vegetarian" | "Non-Vegetarian" | "All";
 
@@ -67,8 +69,8 @@ export default function Home() {
     <main className="flex flex-1 flex-col items-center justify-center pt-[4rem] pb-8">
       {/* Background Section */}
       <div className="relative w-full h-[500px]">
-        <img
-          src="/restaurant.jpg"
+        <Image
+          src={resturantPic}
           alt="Restaurant"
           className="absolute inset-0 w-full h-full object-cover"
         />
@@ -135,9 +137,7 @@ export default function Home() {
               <button
                 key={tab}
                 className={`px-4 py-2 mx-2 font-semibold ${
-                  activeTab === tab
-                    ? "text-yellow-400 underline"
-                    : "text-white"
+                  activeTab === tab ? "text-yellow-400 underline" : "text-white"
                 } focus:outline-none`}
                 onClick={() => setActiveTab(tab)}
               >

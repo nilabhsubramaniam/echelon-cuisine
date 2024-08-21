@@ -2,7 +2,7 @@ import Image from 'next/image';
 
 export default function About() {
   return (
-    <div className="flex flex-col md:flex-row">
+    <div className="flex flex-col md:flex-row pt-16 md:pt-20 px-4 md:px-8">
       {/* Left Side: Image */}
       <div className="flex-1">
         <Image
