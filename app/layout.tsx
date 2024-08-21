@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
-import "./globals.css";
 import { lusitana } from "@/app/ui/fonts";
+import Navbar from "@/app/ui/navbar";
+import Footer from "@/app/ui/footer";
+import "./globals.css";
 
 export const metadata: Metadata = {
   title: "charminarsd",
-  description: "Online Odering",
+  description: "Online Ordering",
 };
 
 export default function RootLayout({
@@ -15,7 +16,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-        <body className={`${lusitana.className} antialiased`}>{children}</body>
+      <body className={`${lusitana.className} antialiased`}>
+        <div className="min-h-screen flex flex-col">
+          <Navbar />
+          <main className="flex-1">{children}</main>
+          <Footer />
+        </div>
+      </body>
     </html>
   );
 }

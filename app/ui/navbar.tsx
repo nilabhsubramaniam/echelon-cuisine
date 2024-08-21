@@ -1,19 +1,32 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import About from "@/app/about";
+import { FaSun, FaMoon } from "react-icons/fa";
 
 export default function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isDarkMode, setIsDarkMode] = useState(false);
+
+  useEffect(() => {
+    if (isDarkMode) {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
+  }, [isDarkMode]);
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
   };
 
+  const toggleDarkMode = () => {
+    setIsDarkMode(!isDarkMode);
+  };
+
   return (
-    <nav className="bg-white bg-opacity-80 shadow-md fixed top-0 left-0 right-0 z-50">
+    <nav className="bg-white bg-opacity-80 dark:bg-gray-800 shadow-md fixed top-0 left-0 right-0 z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo and Text */}
@@ -28,9 +41,15 @@ export default function Navbar() {
               />
             </Link>
             <div className="flex flex-col">
-              <div className="text-xs font-bold">Charminar</div>
-              <div className="text-xs font-medium">Indian Restaurant & Catering</div>
-              <div className="text-xs font-light">San Diego, CA.</div>
+              <div className="text-xs font-bold text-black dark:text-white">
+                Charminar
+              </div>
+              <div className="text-xs font-medium text-black dark:text-white">
+                Indian Restaurant & Catering
+              </div>
+              <div className="text-xs font-light text-black dark:text-white">
+                San Diego, CA.
+              </div>
             </div>
           </div>
 
@@ -38,40 +57,48 @@ export default function Navbar() {
           <div className="hidden md:flex items-center space-x-6">
             <Link
               href="/"
-              className="text-blue-700 hover:text-orange-500 hover:underline underline-offset-4"
+              className="text-blue-700 dark:text-blue-400 hover:text-orange-500 hover:underline underline-offset-4"
             >
               Home
             </Link>
             <Link
-              href="/about"
-              className="text-blue-700 hover:text-orange-500 hover:underline underline-offset-4"
+              href="/about-us"
+              className="text-blue-700 dark:text-blue-400 hover:text-orange-500 hover:underline underline-offset-4"
             >
               About Us
             </Link>
             <Link
               href="/menu"
-              className="text-blue-700 hover:text-orange-500 hover:underline underline-offset-4"
+              className="text-blue-700 dark:text-blue-400 hover:text-orange-500 hover:underline underline-offset-4"
             >
               Menu
             </Link>
             <Link
               href="/call-us"
-              className="text-blue-700 hover:text-orange-500 hover:underline underline-offset-4"
+              className="text-blue-700 dark:text-blue-400 hover:text-orange-500 hover:underline underline-offset-4"
             >
               Call Us
             </Link>
             <Link
               href="/order-online"
-              className="text-blue-700 hover:text-orange-500 hover:underline underline-offset-4"
+              className="text-blue-700 dark:text-blue-400 hover:text-orange-500 hover:underline underline-offset-4"
             >
               Order Online
             </Link>
           </div>
 
+          {/* Dark Mode Toggle */}
+          <button
+            onClick={toggleDarkMode}
+            className="ml-4 text-blue-700 dark:text-yellow-400 focus:outline-none"
+          >
+            {isDarkMode ? <FaSun className="h-6 w-6" /> : <FaMoon className="h-6 w-6" />}
+          </button>
+
           {/* Mobile Menu Button */}
           <div className="md:hidden flex items-center">
             <button
-              className="text-blue-700 hover:text-orange-500 focus:outline-none"
+              className="text-blue-700 dark:text-blue-400 hover:text-orange-500 focus:outline-none"
               onClick={toggleMobileMenu}
             >
               <svg
@@ -96,19 +123,19 @@ export default function Navbar() {
         {isMobileMenuOpen && (
           <div className="md:hidden">
             <div className="flex flex-col space-y-4 py-4">
-              <Link href="/" className="text-blue-700 hover:text-orange-500">
+              <Link href="/" className="text-blue-700 dark:text-blue-400 hover:text-orange-500">
                 Home
               </Link>
-              <Link href="/about_us" className="text-blue-700 hover:text-orange-500">
+              <Link href="/about-us" className="text-blue-700 dark:text-blue-400 hover:text-orange-500">
                 About Us
               </Link>
-              <Link href="/menu" className="text-blue-700 hover:text-orange-500">
+              <Link href="/menu" className="text-blue-700 dark:text-blue-400 hover:text-orange-500">
                 Menu
               </Link>
-              <Link href="/call-us" className="text-blue-700 hover:text-orange-500">
+              <Link href="/call-us" className="text-blue-700 dark:text-blue-400 hover:text-orange-500">
                 Call Us
               </Link>
-              <Link href="/order-online" className="text-blue-700 hover:text-orange-500">
+              <Link href="/order-online" className="text-blue-700 dark:text-blue-400 hover:text-orange-500">
                 Order Online
               </Link>
             </div>

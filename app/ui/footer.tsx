@@ -1,5 +1,3 @@
-// components/Footer.tsx
-
 import {
     FaFacebookF,
     FaInstagram,
@@ -47,7 +45,7 @@ import {
         icon: <HiOutlineMail className="mr-2 inline-block" />,
         text: "demo@gmail.com",
       },
-      { icon: <FaMapMarkerAlt className="mr-2 inline-block" />, text: "XXX XXX" },
+      { icon: <FaMapMarkerAlt className="mr-2 inline-block" />, text: "6755 Mira Mesa Blvd 113, San Diego, CA 92121" },
     ];
   
     const quickLinks = [
@@ -77,9 +75,9 @@ import {
   
     return (
       <footer className="bg-gradient-to-r from-orange-500 via-orange-600 to-orange-700 text-white">
-        <div className="mx-auto flex max-w-7xl flex-col items-start justify-between px-4 py-12 sm:flex-row sm:px-6 lg:px-8 lg:py-16">
+        <div className="mx-auto max-w-7xl flex flex-col items-start justify-between px-4 py-12 sm:px-6 lg:px-8 lg:py-16 space-y-8 sm:space-y-0 sm:flex-row sm:flex-wrap">
           {/* Logo and Restaurant Info */}
-          <div className="mb-8 flex flex-col space-y-8 sm:mb-0 w-1/4">
+          <div className="w-full sm:w-1/2 lg:w-1/4 mb-8 sm:mb-0">
             <h2 className="text-3xl font-bold">
               <Link href="/">
                 <Image
@@ -91,7 +89,7 @@ import {
                 />
               </Link>
             </h2>
-            <div>
+            <div className="mt-4">
               <h3 className="mb-4 text-lg font-semibold">
                 Charminar Indian Restaurant & Catering
               </h3>
@@ -100,11 +98,8 @@ import {
             </div>
           </div>
   
-          {/* Vertical Line */}
-          <div className="w-px bg-white mx-4" />
-  
           {/* Business Hours */}
-          <div className="mb-8 flex flex-col space-y-4 sm:mb-0 w-1/4">
+          <div className="w-full sm:w-1/2 lg:w-1/4 mb-8 sm:mb-0">
             <h3 className="mb-4 text-lg font-semibold text-white flex items-center">
               <FaClock className="mr-2" />
               Business Hours
@@ -118,11 +113,8 @@ import {
             </ul>
           </div>
   
-          {/* Vertical Line */}
-          <div className="w-px bg-white mx-4" />
-  
           {/* Get Direction */}
-          <div className="mb-8 flex flex-col space-y-4 sm:mb-0 w-1/4">
+          <div className="w-full sm:w-1/2 lg:w-1/4 mb-8 sm:mb-0">
             <h3 className="mb-4 text-lg font-semibold">Get Direction</h3>
             <ul className="space-y-4">
               {contactInfo.map((item, index) => (
@@ -134,12 +126,9 @@ import {
             </ul>
           </div>
   
-          {/* Vertical Line */}
-          <div className="w-px bg-white mx-4" />
-  
           {/* Social Icons and Quick Links */}
-          <div className="mb-8 flex flex-col space-y-4 sm:mb-0 w-1/4">
-            <div className="flex space-x-4">
+          <div className="w-full sm:w-1/2 lg:w-1/4 mb-8 sm:mb-0">
+            <div className="flex space-x-4 mb-4">
               {socialIcons.map((social, index) => (
                 <a
                   key={index}
@@ -152,14 +141,12 @@ import {
                 </a>
               ))}
             </div>
-            <div>
-              <h3 className="mb-4 text-lg font-semibold">Quick Links</h3>
-              <ul className="space-y-4">
-                {quickLinks.map((link, index) => (
-                  <li key={index}>{link}</li>
-                ))}
-              </ul>
-            </div>
+            <h3 className="mb-4 text-lg font-semibold">Quick Links</h3>
+            <ul className="space-y-4">
+              {quickLinks.map((link, index) => (
+                <li key={index}>{link}</li>
+              ))}
+            </ul>
           </div>
         </div>
         <div className="border-t border-white border-opacity-20 py-4 text-center text-sm">
