@@ -14,6 +14,9 @@ const config: Config = {
         'gradient-orange': 'linear-gradient(to right, #f79c42, #f8a488)',
         "gradient-lime-blue": "linear-gradient(to right, #84cc16, #1e3a8a)", 
       },
+      colors: {
+        gold: '#E5B74D',  // Adding custom gold color here
+      },
     },
   },
   plugins: [],

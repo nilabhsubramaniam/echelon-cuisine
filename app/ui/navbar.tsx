@@ -12,7 +12,7 @@ export default function Navbar() {
   };
 
   return (
-    <nav className="bg-gradient-lime-blue text-white fixed top-0 left-0 right-0 z-50 shadow-md">
+    <nav className="bg-black text-white fixed top-0 left-0 right-0 z-50 shadow-md">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo and Text */}
@@ -20,57 +20,37 @@ export default function Navbar() {
             <Link href="/">
               <Image
                 src="/logo.jpg"
-                alt="YourBrand Logo"
+                alt="Charminar Logo"
                 width={70}
                 height={70}
                 className="h-10 w-auto"
               />
             </Link>
             <div className="flex flex-col">
-              <div className="text-xs font-bold">Charminar</div>
-              <div className="text-xs font-medium">Indian Restaurant & Catering</div>
-              <div className="text-xs font-light">San Diego, CA.</div>
+              <div className="text-xs font-bold text-gold">Charminar</div>
+              <div className="text-xs font-medium text-gold">Indian Restaurant & Catering</div>
+              <div className="text-xs font-light text-gold">San Diego, CA.</div>
             </div>
           </div>
 
           {/* Desktop Navigation Links */}
           <div className="hidden md:flex items-center space-x-6">
-            <Link
-              href="/"
-              className="hover:text-orange-500 hover:underline underline-offset-4"
-            >
+            <Link href="/" className="hover:text-gold transition-colors duration-300">
               Home
             </Link>
-            <Link
-              href="/about-us"
-              className="hover:text-orange-500 hover:underline underline-offset-4"
-            >
-              About Us
-            </Link>
-            <Link
-              href="/menu"
-              className="hover:text-orange-500 hover:underline underline-offset-4"
-            >
+            <Link href="/menu" className="hover:text-gold transition-colors duration-300">
               Menu
             </Link>
-            <Link
-              href="/call-us"
-              className="hover:text-orange-500 hover:underline underline-offset-4"
-            >
-              Call Us
+            <Link href="/call-us" className="hover:text-gold transition-colors duration-300">
+              Catering
             </Link>
-            <Link
-              href="/order-online"
-              className="hover:text-orange-500 hover:underline underline-offset-4"
-            >
-              Order Online
-            </Link>
+           
           </div>
 
           {/* Mobile Menu Button */}
           <div className="md:hidden flex items-center">
             <button
-              className="hover:text-orange-500 focus:outline-none"
+              className="hover:text-gold focus:outline-none"
               onClick={toggleMobileMenu}
             >
               <svg
@@ -93,21 +73,21 @@ export default function Navbar() {
 
         {/* Mobile Menu Links */}
         {isMobileMenuOpen && (
-          <div className="md:hidden">
+          <div className="md:hidden bg-black text-white">
             <div className="flex flex-col space-y-4 py-4">
-              <Link href="/" className="hover:text-orange-500">
+              <Link href="/" className="hover:text-gold transition-colors duration-300">
                 Home
               </Link>
-              <Link href="/about-us" className="hover:text-orange-500">
+              <Link href="/about-us" className="hover:text-gold transition-colors duration-300">
                 About Us
               </Link>
-              <Link href="/menu" className="hover:text-orange-500">
+              <Link href="/menu" className="hover:text-gold transition-colors duration-300">
                 Menu
               </Link>
-              <Link href="/call-us" className="hover:text-orange-500">
+              <Link href="/call-us" className="hover:text-gold transition-colors duration-300">
                 Call Us
               </Link>
-              <Link href="/order-online" className="hover:text-orange-500">
+              <Link href="/order-online" className="hover:text-gold transition-colors duration-300">
                 Order Online
               </Link>
             </div>
