@@ -28,23 +28,33 @@ export default function Navbar() {
             </Link>
             <div className="flex flex-col">
               <div className="text-xs font-bold text-gold">Charminar</div>
-              <div className="text-xs font-medium text-gold">Indian Restaurant & Catering</div>
+              <div className="text-xs font-medium text-gold">
+                Indian Restaurant & Catering
+              </div>
               <div className="text-xs font-light text-gold">San Diego, CA.</div>
             </div>
           </div>
 
           {/* Desktop Navigation Links */}
           <div className="hidden md:flex items-center space-x-6">
-            <Link href="/" className="hover:text-gold transition-colors duration-300">
+            <Link
+              href="/"
+              className="hover:text-gold transition-colors duration-300"
+            >
               Home
             </Link>
-            <Link href="/menu" className="hover:text-gold transition-colors duration-300">
+            <Link
+              href="/menu"
+              className="hover:text-gold transition-colors duration-300"
+            >
               Menu
             </Link>
-            <Link href="/call-us" className="hover:text-gold transition-colors duration-300">
+            <Link
+              href="/catering"
+              className="hover:text-gold transition-colors duration-300"
+            >
               Catering
             </Link>
-           
           </div>
 
           {/* Mobile Menu Button */}
@@ -75,20 +85,24 @@ export default function Navbar() {
         {isMobileMenuOpen && (
           <div className="md:hidden bg-black text-white">
             <div className="flex flex-col space-y-4 py-4">
-              <Link href="/" className="hover:text-gold transition-colors duration-300">
+              <Link
+                href="/"
+                className="hover:text-gold transition-colors duration-300"
+              >
                 Home
               </Link>
-              <Link href="/about-us" className="hover:text-gold transition-colors duration-300">
-                About Us
-              </Link>
-              <Link href="/menu" className="hover:text-gold transition-colors duration-300">
+              <Link
+                href="/menu"
+                className="hover:text-gold transition-colors duration-300"
+              >
                 Menu
               </Link>
-              <Link href="/call-us" className="hover:text-gold transition-colors duration-300">
-                Call Us
-              </Link>
-              <Link href="/order-online" className="hover:text-gold transition-colors duration-300">
-                Order Online
+
+              <Link
+                href="/catering"
+                className="hover:text-gold transition-colors duration-300"
+              >
+                Catering
               </Link>
             </div>
           </div>
