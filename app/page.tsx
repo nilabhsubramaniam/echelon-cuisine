@@ -4,6 +4,7 @@ import TestimonialSlider from "@/app/ui/testimonial";
 import Link from "next/link";
 import { FaShoppingCart, FaCreditCard, FaSmile } from "react-icons/fa";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 import resturantPic from "../public/restaurant.jpg";
 
 type MenuType = "Vegetarian" | "Non-Vegetarian" | "All";
@@ -13,87 +14,95 @@ type Special = {
   price: string;
   images: { src: string; description: string }[];
   buttonText: string;
+  slug: string;
 };
 
 const specialsData: Record<string, Special> = {
-    Monday: {
-      title: "Family-Style Meals",
-      description:
-        "Enjoy a family-size pan of your favorite dish or pick up a complete family bundle.",
-      price: "$19.99",
-      images: [
-        { src: "/veg_biryani.jpg", description: "Delicious Veg Biryani" },
-        { src: "/afghan_chicken.jpg", description: "Afghan Chicken" },
-      ], 
-      buttonText: "Order Now",
-    },
-    Tuesday: {
-      title: "Taco Tuesday",
-      description: "Get 3 tacos for the price of 2. Available for dine-in only.",
-      price: "$9.99",
-      images: [
-        { src: "/juice.jpg", description: "Refreshing Juice" },
-        { src: "/chilli_chicken.jpg", description: "Spicy Chilli Chicken" },
-      ], 
-      buttonText: "Learn More",
-    },
-    Wednesday: {
-      title: "Mutton Special",
-      description: "Enjoy a special mutton roast dish along with dessert.",
-      price: "$15.99",
-      images: [
-        { src: "/mutton_roast.jpg", description: "Tender Mutton Roast" },
-        { src: "/gulab_jamun.jpg", description: "Sweet Gulab Jamun" },
-      ], 
-      buttonText: "Order Now",
-    },
-    Thursday: {
-      title: "Samosa Delight",
-      description: "Get a taste of our crispy samosas with a side of dessert.",
-      price: "$8.99",
-      images: [
-        { src: "/samosa.jpg", description: "Crispy Samosa" },
-        { src: "/gulab_jamun.jpg", description: "Sweet Gulab Jamun" },
-      ], 
-      buttonText: "Order Now",
-    },
-    Friday: {
-      title: "Biryani Friday",
-      description: "Enjoy a variety of delicious biryani dishes.",
-      price: "$12.99",
-      images: [
-        { src: "/veg_biryani.jpg", description: "Delicious Veg Biryani" },
-        { src: "/egg_biryani.jpg", description: "Flavorful Egg Biryani" },
-      ], 
-      buttonText: "Order Now",
-    },
-    Saturday: {
-      title: "Tandoori Special",
-      description: "Try our Tandoori Chicken and Butter Paneer specials.",
-      price: "$14.99",
-      images: [
-        { src: "/tandoori_chicken.jpg", description: "Tandoori Chicken" },
-        { src: "/butter_panner.jpg", description: "Creamy Butter Paneer" },
-      ], 
-      buttonText: "Order Now",
-    },
-    Sunday: {
-      title: "Biryani Feast",
-      description: "Feast on Veg Biryani and Dum Biryani this Sunday.",
-      price: "$13.99",
-      images: [
-        { src: "/veg_biryani.jpg", description: "Delicious Veg Biryani" },
-        { src: "/dum_biryani.jpg", description: "Aromatic Dum Biryani" },
-      ], 
-      buttonText: "Order Now",
-    },
-  };
-  
+  Monday: {
+    title: "Family-Style Meals",
+    slug: "family-style-meals", // Slug for URL
+    description:
+      "Enjoy a family-size pan of your favorite dish or pick up a complete family bundle.",
+    price: "$19.99",
+    images: [
+      { src: "/veg_biryani.jpg", description: "Delicious Veg Biryani" },
+      { src: "/afghan_chicken.jpg", description: "Afghan Chicken" },
+    ],
+    buttonText: "Order Now",
+  },
+  Tuesday: {
+    title: "Taco Tuesday",
+    slug: "taco-tuesday", // Slug for URL
+    description: "Get 3 tacos for the price of 2. Available for dine-in only.",
+    price: "$9.99",
+    images: [
+      { src: "/juice.jpg", description: "Refreshing Juice" },
+      { src: "/chilli_chicken.jpg", description: "Spicy Chilli Chicken" },
+    ],
+    buttonText: "Learn More",
+  },
+  Wednesday: {
+    title: "Mutton Special",
+    slug: "mutton-special", // Slug for URL
+    description: "Enjoy a special mutton roast dish along with dessert.",
+    price: "$15.99",
+    images: [
+      { src: "/mutton_roast.jpg", description: "Tender Mutton Roast" },
+      { src: "/gulab_jamun.jpg", description: "Sweet Gulab Jamun" },
+    ],
+    buttonText: "Order Now",
+  },
+  Thursday: {
+    title: "Samosa Delight",
+    slug: "samosa-delight", // Slug for URL
+    description: "Get a taste of our crispy samosas with a side of dessert.",
+    price: "$8.99",
+    images: [
+      { src: "/samosa.jpg", description: "Crispy Samosa" },
+      { src: "/gulab_jamun.jpg", description: "Sweet Gulab Jamun" },
+    ],
+    buttonText: "Order Now",
+  },
+  Friday: {
+    title: "Biryani Friday",
+    slug: "biryani-friday", // Slug for URL
+    description: "Enjoy a variety of delicious biryani dishes.",
+    price: "$12.99",
+    images: [
+      { src: "/veg_biryani.jpg", description: "Delicious Veg Biryani" },
+      { src: "/egg_biryani.jpg", description: "Flavorful Egg Biryani" },
+    ],
+    buttonText: "Order Now",
+  },
+  Saturday: {
+    title: "Tandoori Special",
+    slug: "tandoori-special", // Slug for URL
+    description: "Try our Tandoori Chicken and Butter Paneer specials.",
+    price: "$14.99",
+    images: [
+      { src: "/tandoori_chicken.jpg", description: "Tandoori Chicken" },
+      { src: "/butter_panner.jpg", description: "Creamy Butter Paneer" },
+    ],
+    buttonText: "Order Now",
+  },
+  Sunday: {
+    title: "Biryani Feast",
+    slug: "biryani-feast", // Slug for URL
+    description: "Feast on Veg Biryani and Dum Biryani this Sunday.",
+    price: "$13.99",
+    images: [
+      { src: "/veg_biryani.jpg", description: "Delicious Veg Biryani" },
+      { src: "/dum_biryani.jpg", description: "Aromatic Dum Biryani" },
+    ],
+    buttonText: "Order Now",
+  },
+};
 
 export default function Home() {
   // Move all hooks to the top
   const [special, setSpecial] = useState<Special | null>(null);
   const [activeTab, setActiveTab] = useState<MenuType>("All");
+  const router = useRouter();
 
   useEffect(() => {
     const today = new Date().toLocaleString("en-US", { weekday: "long" });
@@ -102,11 +111,11 @@ export default function Home() {
     // Check if a special exists for the current day, and setSpecial to the special or null
     setSpecial(todaySpecial || null);
   }, []);
-    // Function to scroll to "Today's Special" section
-    const scrollToSpecials = () => {
-        const specialsSection = document.getElementById("specials-section");
-        specialsSection?.scrollIntoView({ behavior: "smooth" });
-      };
+  // Function to scroll to "Today's Special" section
+  const scrollToSpecials = () => {
+    const specialsSection = document.getElementById("specials-section");
+    specialsSection?.scrollIntoView({ behavior: "smooth" });
+  };
 
   // Continue rendering even if there's no special for today
   // Render empty state or simply continue with other content
@@ -131,7 +140,7 @@ export default function Home() {
 
           <div className="mt-8">
             <Link
-              href="/about"
+              href="/specials"
               className="inline-block bg-gold text-black px-6 py-2 rounded-lg shadow-md hover:bg-yellow-500 hover:text-white"
             >
               Explore More
@@ -158,7 +167,8 @@ export default function Home() {
       </div>
 
       {/* Todays Sepcial */}
-      <section id="specials-section"  className="w-full px-8 py-16 bg-gray-100">
+
+      <section id="specials-section" className="w-full px-8 py-16 bg-gray-100">
         <h2 className="text-3xl font-bold text-center mb-2">Today's Special</h2>
         <div className="border-t border-gray-300 mb-12"></div>
 
@@ -185,7 +195,12 @@ export default function Home() {
                 <p className="text-center text-lg font-semibold mt-4">
                   {special.price}
                 </p>
-                <button className="mt-6 bg-yellow-400 text-black px-4 py-2 rounded-lg shadow-md hover:bg-yellow-500 hover:text-white">
+
+                {/* Button that redirects to the dynamic special page */}
+                <button
+                  className="mt-6 bg-yellow-400 text-black px-4 py-2 rounded-lg shadow-md hover:bg-yellow-500 hover:text-white"
+                  onClick={() => router.push(`/specials?slug=${special.slug}`)} // Construct URL manually
+                >
                   {special.buttonText}
                 </button>
               </div>
